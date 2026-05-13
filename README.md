@@ -58,3 +58,10 @@ API → Redis → Worker
 - FastAPI
 - Redis
 - Docker Compose
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por Cairo
+
