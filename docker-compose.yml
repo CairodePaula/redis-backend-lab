@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - appnet
+
+  api:
+    build: ./api
+    container_name: api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    networks:
+      - appnet
+
+  worker:
+    build: ./worker
+    container_name: worker
+    depends_on:
+      - redis
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
